@@ -1,0 +1,9 @@
+// Стандартне focus-visible кільце.
+// @content дозволяє передати додаткові властивості (box-shadow тощо).
+@mixin focus-ring($color: white, $offset: 1px) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+    @content;
+  }
+}

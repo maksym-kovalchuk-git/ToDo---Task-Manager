@@ -1,0 +1,92 @@
+.task-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: #3A3F4B;
+    transform: translateY(-1px);
+  }
+
+  &.priority {
+    border-color: var(--danger-border);
+
+    &:hover {
+      border-color: var(--danger);
+    }
+  }
+
+  &--dragging {
+    opacity: 0.5;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.task-drag-handle {
+  cursor: default;
+  user-select: none;
+  padding: 14px;
+  border-radius: 8px;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.task-priority-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-radius: 6px;
+  padding: 2px 12px;
+  margin-bottom: 4px;
+  margin-right: 100%;
+}
+
+.task-title {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 4px 0 4px;
+  color: var(--text);
+  user-select: text;
+  cursor: text;
+  overflow-wrap: anywhere;
+}
+
+.task-description {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+  line-height: 1.5;
+  user-select: none;
+  overflow-wrap: anywhere;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  user-select: none;
+
+  .deadline {
+    color: var(--danger);
+  }
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}

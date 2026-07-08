@@ -1,0 +1,54 @@
+@use '../styles/mixins' as *;
+
+.add-column-form {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+
+  input {
+    background: var(--card-bg);
+  }
+
+  // форма ще не всередині колонки → --col-accent не визначений;
+  // --selected-color відображає вибраний колір в реальному часі
+  input:focus-visible {
+    outline-color: var(--selected-color, var(--accent));
+  }
+
+  // колір кнопки "Створити" відповідає обраному кольору ще до збереження колонки
+  .btn-primary {
+    background: var(--selected-color, var(--accent));
+    border-color: var(--selected-color, var(--accent));
+
+    &:hover {
+      background: var(--selected-color, var(--accent));
+      border-color: var(--selected-color, var(--accent));
+      filter: brightness(1.12);
+    }
+  }
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.add-column-actions {
+  display: flex;
+  gap: 8px;
+
+  .btn {
+    flex: 1;
+
+    @include focus-ring(var(--selected-color, var(--accent))) {
+      box-shadow: 0 0 0 3px var(--selected-color, var(--accent));
+    }
+  }
+}

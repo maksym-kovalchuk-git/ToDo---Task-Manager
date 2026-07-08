@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  // ---- Базові поверхні ----
+  --bg: #15171C;
+  --surface: #1E2128;
+  --surface-hover: #252830;
+  --card-bg: #16161e;
+ 
+  // ---- Рамки та текст ----
+  --border: #2A2E37;
+  --text: #E4E6EB;
+  --text-muted: #8B8F9A;
+ 
+  // ---- Акцентний колір (кнопки, фокус) ----
+  --accent: #A678F0;
+  --accent-hover: #B98EF5;
+  --accent-soft: rgba(166, 120, 240, 0.14);
+  --accent-border: rgba(166, 120, 240, 0.4);
+ 
+  // ---- Колір помилки / видалення / пріоритету ----
+  --danger: #C75450;
+  --danger-soft: rgba(199, 84, 80, 0.12);
+  --danger-border: rgba(199, 84, 80, 0.3);
+ 
+  --warning: #F2B544;
+  --warning-soft: rgba(242, 181, 68, 0.12);
+  --warning-border: rgba(242, 181, 68, 0.3);
+  
+  // ---- Кольори колонок (статус-смужка зверху) ----
+  --col-todo: #5B8DEF;
+  --col-progress: #F2B544;
+  --col-done: #4FAE7E;
+ 
+  // ---- Фон сторінки (градієнт) ----
+  --bg-gradient-top: #0D1119;
+  --bg-gradient-mid: #131A29;
+  --bg-gradient-bottom: #1B2436;
+  --bg-glow-blue: rgba(91, 141, 239, 0.18);
+  --bg-glow-blue-soft: rgba(60, 90, 180, 0.15);
+ 
+  // ---- Розміри ----
+  --radius: 10px;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 90%, rgba(91, 141, 239, 0.10), transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(60, 90, 180, 0.07), transparent 50%),
+    linear-gradient(180deg, #0D1119 0%, #131A29 55%, #1B2436 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+

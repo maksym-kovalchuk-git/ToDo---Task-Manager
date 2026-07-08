@@ -1,0 +1,66 @@
+.task-card-editing {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  gap: 8px;
+  cursor: default;
+
+  &:hover {
+    transform: none;
+  }
+
+  label {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  // Темніший фон для інпутів всередині картки редагування
+  input[type="text"],
+  input:not([type]),
+  input[type="date"],
+  textarea {
+    background: var(--card-bg);
+  }
+}
+
+.task-card-editing .form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+// ---- Bootstrap switch override ----
+
+.form-switch .form-check-input:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+}
+
+.form-switch {
+  margin-top: 5px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  input.form-check-input {
+    width: 38px;
+    height: 20px;
+    margin: 0;
+    background-color: var(--surface);
+    border-color: var(--border);
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      border-color: var(--col-accent, var(--accent));
+    }
+
+    &:checked {
+      background-color: var(--col-accent, var(--accent));
+      border-color: var(--col-accent, var(--accent));
+    }
+  }
+}

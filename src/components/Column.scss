@@ -1,0 +1,33 @@
+.column {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--col-accent, var(--accent));
+  }
+}
+
+.task-list {
+  display: flex;
+  flex: 1;
+  padding: 0 18px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-empty {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+  padding: 28px 12px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
