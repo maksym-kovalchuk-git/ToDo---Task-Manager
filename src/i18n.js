@@ -5,8 +5,10 @@ import en from './locales/en.json';
 
 i18n.use(initReactI18next).init({
   resources: { uk: { translation: uk }, en: { translation: en } },
-  lng: 'uk',
+  lng: localStorage.getItem('lang') ?? 'uk',
   fallbackLng: 'en',
 });
+
+i18n.on('languageChanged', (lng) => localStorage.setItem('lang', lng));
 
 export default i18n;
