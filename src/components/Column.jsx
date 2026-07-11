@@ -5,6 +5,7 @@ import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 
 import { ColumnHeader, AddTaskForm, TaskCard, EditTaskForm, ConfirmDialog } from './';
 
+import { useTranslation } from 'react-i18next';
 import { useConfirmDialog } from '../hooks';
 
 import './Column.scss';
@@ -29,6 +30,8 @@ function Column({ title, columnId, color, tasks, setTasks, onRenameColumn, onRem
   const { confirm, dialogProps } = useConfirmDialog();
   const { setNodeRef: setDroppableRef } = useDroppable({ id: columnId });
 
+  const { t } = useTranslation();
+
   function handleAddTask(newTask) {
     setTasks([...tasks, newTask]);
     setIsFormOpen(false);
@@ -41,7 +44,7 @@ function Column({ title, columnId, color, tasks, setTasks, onRenameColumn, onRem
 
   function handleDeleteTask(task) {
     confirm(
-      `Видалити завдання «${task.title}»?`,
+      t('deleteTaskConfirmMessage', { title: task.title }),
       () => setTasks(tasks.filter((t) => t.id !== task.id))
     );
   }
@@ -56,7 +59,7 @@ function Column({ title, columnId, color, tasks, setTasks, onRenameColumn, onRem
           onRename={onRenameColumn}
           onRemove={() =>
             confirm(
-              `Видалити колонку «${title}» разом із усіма завданнями?`,
+              t('deleteColumnConfirmMessage', { title }),
               onRemoveColumn
             )
           }
@@ -85,7 +88,7 @@ function Column({ title, columnId, color, tasks, setTasks, onRenameColumn, onRem
                 )
               )
             ) : (
-              <p className='task-empty'>Поки завдань немає</p>
+              <p className='task-empty'>{t('columnTaskEmpty')}</p>
             )}
           </SortableContext>
         </div>
@@ -98,7 +101,7 @@ function Column({ title, columnId, color, tasks, setTasks, onRenameColumn, onRem
         ) : (
           <div className='add-task'>
             <button className='btn btn-primary' onClick={() => setIsFormOpen(true)}>
-              + Нове завдання
+              + {t('addTask')}
             </button>
           </div>
         )}

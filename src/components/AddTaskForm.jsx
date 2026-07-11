@@ -1,4 +1,7 @@
 import { useState } from 'react';
+
+import { useTranslation } from 'react-i18next';
+
 import './AddTaskForm.scss';
 
 /**
@@ -8,6 +11,7 @@ import './AddTaskForm.scss';
  * }} props
  */
 function AddTaskForm({ onAdd, onCancel }) {
+  const { t } = useTranslation();
   const [title, setTitle] = useState('');
 
   function handleSubmit(e) {
@@ -30,12 +34,12 @@ function AddTaskForm({ onAdd, onCancel }) {
         autoFocus
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder='Введіть назву завдання'
+        placeholder={t('enterTaskTitle')}
         maxLength={50}
       />
       <div className='btn-add-task'>
-        <button className='btn btn-primary' type='submit'>Додати завдання</button>
-        <button className='btn' type='button' onClick={onCancel}>Скасувати</button>
+        <button className='btn btn-primary' type='submit'>{t('addTask')}</button>
+        <button className='btn' type='button' onClick={onCancel}>{t('cancel')}</button>
       </div>
     </form>
   );

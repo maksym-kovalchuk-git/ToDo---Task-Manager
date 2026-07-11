@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { COLUMN_COLOR_OPTIONS } from '../constants';
+
+import { useTranslation } from 'react-i18next';
+
 import './ColumnHeader.scss';
 
 /**
@@ -16,6 +19,8 @@ function ColumnHeader({ title, color, taskCount, onRename, onRemove, onChangeCol
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [isEditingColor, setIsEditingColor] = useState(false);
   const [titleDraft, setTitleDraft] = useState(title);
+
+  const { t } = useTranslation();
 
   function handleTitleSubmit(e) {
     e.preventDefault();
@@ -55,7 +60,7 @@ function ColumnHeader({ title, color, taskCount, onRename, onRemove, onChangeCol
               <button
                 type='submit'
                 className='column-title-btn column-title-btn--confirm'
-                aria-label='Зберегти назву'
+                aria-label={t('saveTitle')}
               >
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -65,7 +70,7 @@ function ColumnHeader({ title, color, taskCount, onRename, onRemove, onChangeCol
                 type='button'
                 className='column-title-btn column-title-btn--cancel'
                 onClick={handleTitleCancel}
-                aria-label='Скасувати'
+                aria-label={t('cancel')}
               >
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -76,7 +81,7 @@ function ColumnHeader({ title, color, taskCount, onRename, onRemove, onChangeCol
         ) : (
           <h2
             onDoubleClick={handleOpenTitleEdit}
-            title='Натисніть двічі, щоб редагувати назву колонки'
+            title={t('doubleClickToEdit')}
           >
             {title}
           </h2>
@@ -89,7 +94,7 @@ function ColumnHeader({ title, color, taskCount, onRename, onRemove, onChangeCol
               className='column-color-btn'
               style={{ '--btn-color': color || '#A678F0' }}
               onClick={() => setIsEditingColor(true)}
-              aria-label='Змінити колір колонки'
+              aria-label={t('changeColumnColor')}
             />
           )}
           <span className='column-count'>{taskCount}</span>
@@ -98,7 +103,7 @@ function ColumnHeader({ title, color, taskCount, onRename, onRemove, onChangeCol
               type='button'
               className='column-remove-btn'
               onClick={onRemove}
-              aria-label='Видалити колонку'
+              aria-label={t('deleteColumn')}
             >
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
                 <path d="M256-213.85 213.85-256l224-224-224-224L256-746.15l224 224 224-224L746.15-704l-224 224 224 224L704-213.85l-224-224-224 224Z"/>
@@ -110,7 +115,7 @@ function ColumnHeader({ title, color, taskCount, onRename, onRemove, onChangeCol
 
       {isEditingColor && (
         <div className='column-color-picker'>
-          <span>Вибір кольору</span>
+          <span>{t('colorSelect')}</span>
           <div className='column-color-dots'>
             {COLUMN_COLOR_OPTIONS.map((opt) => (
               <button

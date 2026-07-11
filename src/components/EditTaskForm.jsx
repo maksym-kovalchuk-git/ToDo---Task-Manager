@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import DatePickerUk from './DatePicker';
+
+import { useTranslation } from 'react-i18next';
+
 import './EditTaskForm.scss';
 
 function toIsoDate(date) {
@@ -18,17 +21,19 @@ function toIsoDate(date) {
  * }} props
  */
 function EditTaskForm({ task, columnId, onSave, onCancel }) {
+  const { t } = useTranslation();
+
   const [draft, setDraft] = useState({ ...task });
 
   return (
     <div className='task-card task-card-editing'>
-      <label>Назва завдання:</label>
+      <label>{t('taskTitle')}:</label>
       <input
         value={draft.title}
         onChange={(e) => setDraft({ ...draft, title: e.target.value })}
         maxLength={50}
       />
-      <label>Опис:</label>
+      <label>{t('taskDescription')}:</label>
       <textarea
         value={draft.description}
         onChange={(e) => setDraft({ ...draft, description: e.target.value })}
@@ -44,19 +49,23 @@ function EditTaskForm({ task, columnId, onSave, onCancel }) {
           onChange={(e) => setDraft({ ...draft, priority: e.target.checked })}
         />
         <label className='form-check-label' htmlFor={`prioritySwitch-${columnId}-${task.id}`}>
-          Позначити завдання пріоритетним
+          {t('taskCheckPriority')}
         </label>
       </div>
       <label>
-        Дедлайн:
+        {t('deadline')}:
         <DatePickerUk
           value={draft.deadline ? new Date(draft.deadline) : null}
           onChange={(date) => setDraft({ ...draft, deadline: toIsoDate(date) })}
         />
       </label>
       <div className='form-actions'>
-        <button className='btn btn-primary' onClick={() => onSave(draft)}>Зберегти</button>
-        <button className='btn' onClick={onCancel}>Скасувати</button>
+        <button className='btn btn-primary' onClick={() => onSave(draft)}>
+          {t('save')}
+        </button>
+        <button className='btn' onClick={onCancel}>
+          {t('cancel')}
+        </button>
       </div>
     </div>
   );

@@ -1,18 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
+
+import { useTranslation } from 'react-i18next';
+
 import "./DatePicker.scss";
 
 // ---------------------------------------------------------------
 // DatePicker
 // ---------------------------------------------------------------
-
-// В майбутньому можна буде зробити локалізацію через props, але поки що лише українська
-const MONTHS_UK = [
-  "Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень",
-  "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень",
-];
-
-const WEEKDAYS_UK = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
 
 function pad2(n) { return String(n).padStart(2, "0"); }
 
@@ -73,7 +68,7 @@ function ChevronRight() {
   );
 }
 
-export default function DatePickerUk({ value = null, onChange, placeholder = "Оберіть дату" }) {
+function DatePicker({ value = null, onChange, placeholder }) {
   const today = new Date();
   const [open, setOpen] = useState(false);
   const [viewYear, setViewYear] = useState((value || today).getFullYear());
@@ -82,6 +77,11 @@ export default function DatePickerUk({ value = null, onChange, placeholder = "О
 
   const rootRef = useRef(null);
   const popupRef = useRef(null);
+
+  const { t } = useTranslation();
+  const months = t('months', { returnObjects: true });
+  const weekdays = t('weekdays', { returnObjects: true });
+  const resolvedPlaceholder = placeholder ?? t('pickDate');
 
   useEffect(() => {
     if (open && rootRef.current) {
@@ -133,7 +133,7 @@ export default function DatePickerUk({ value = null, onChange, placeholder = "О
     <div className="dp" ref={rootRef}>
       <div className={`dp__field ${open ? "dp__field--open" : ""}`}>
         <button type="button" className="dp__value" onClick={() => setOpen(!open)}>
-          {value ? formatDate(value) : placeholder}
+          {value ? formatDate(value) : resolvedPlaceholder}
         </button>
         <button type="button" className="dp__icon-btn" onClick={() => setOpen(!open)}>
           <CalendarIcon />
@@ -154,7 +154,7 @@ export default function DatePickerUk({ value = null, onChange, placeholder = "О
               <ChevronLeft />
             </button>
             <div className="dp__title">
-              <span>{MONTHS_UK[viewMonth]}</span>
+              <span>{months[viewMonth]}</span>
               <span className="dp__title-year">{viewYear}</span>
             </div>
             <button type="button" className="dp__nav-btn" onClick={() => { if(viewMonth === 11) { setViewMonth(0); setViewYear(y => y+1); } else { setViewMonth(m => m+1); } }}>
@@ -162,7 +162,7 @@ export default function DatePickerUk({ value = null, onChange, placeholder = "О
             </button>
           </div>
           <div className="dp__weekdays">
-            {WEEKDAYS_UK.map((wd) => <div className="dp__weekday" key={wd}>{wd}</div>)}
+            {weekdays.map((wd) => <div className="dp__weekday" key={wd}>{wd}</div>)}
           </div>
           <div className="dp__days">
             {cells.map((cell, idx) => (
@@ -177,3 +177,5 @@ export default function DatePickerUk({ value = null, onChange, placeholder = "О
     </div>
   );
 }
+
+export default DatePicker;

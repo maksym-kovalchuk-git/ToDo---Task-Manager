@@ -9,10 +9,10 @@ export const COLUMN_COLOR_OPTIONS = [
 ];
 
 /** @type {{ id: string, title: string, color: string }[]} */
-export const DEFAULT_COLUMNS = [
-  { id: 'col-todo', title: 'Нові завдання', color: '#5B8DEF' },
-  { id: 'col-progress', title: 'В процесі', color: '#F2B544' },
-  { id: 'col-done', title: 'Завершені', color: '#4FAE7E' },
+export const getDefaultColumns = (t) => [
+  { id: 'col-todo',     title: t('defaultColumns.todo'),     color: '#5B8DEF' },
+  { id: 'col-progress', title: t('defaultColumns.progress'), color: '#F2B544' },
+  { id: 'col-done',     title: t('defaultColumns.done'),     color: '#4FAE7E' },
 ];
 
 /** @type {Record<string, import('./types').Task[]>} */

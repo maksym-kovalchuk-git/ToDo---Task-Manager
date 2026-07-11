@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+
+import { useTranslation } from 'react-i18next';
+
 import './ConfirmDialog.scss';
 
 // ---------------------------------------------------------------
@@ -13,6 +16,8 @@ import './ConfirmDialog.scss';
 // ---------------------------------------------------------------
 
 export default function ConfirmDialog({ open, message, onConfirm, onCancel }) {
+  const { t } = useTranslation();
+
   const [suppress, setSuppress] = useState(false);
 
   // Скидаємо чекбокс кожен раз при відкритті нового діалогу
@@ -55,7 +60,7 @@ export default function ConfirmDialog({ open, message, onConfirm, onCancel }) {
         </div>
 
         <h2 className='cd__title' id='cd-title'>
-          Підтвердження видалення
+          {t('deleteConfirmation')}
         </h2>
 
         <p className='cd__message'>{message}</p>
@@ -66,7 +71,7 @@ export default function ConfirmDialog({ open, message, onConfirm, onCancel }) {
             checked={suppress}
             onChange={(e) => setSuppress(e.target.checked)}
           />
-          <span>Не запитувати протягом години</span>
+          <span>{t('dontShowAgain')}</span>
         </label>
 
         <div className='cd__actions'>
@@ -75,7 +80,7 @@ export default function ConfirmDialog({ open, message, onConfirm, onCancel }) {
             className='cd__btn cd__btn--cancel'
             onClick={onCancel}
           >
-            Скасувати
+            {t('cancel')}
           </button>
           <button
             type='button'
@@ -83,7 +88,7 @@ export default function ConfirmDialog({ open, message, onConfirm, onCancel }) {
             onClick={() => onConfirm(suppress)}
             autoFocus
           >
-            Видалити
+            {t('delete')}
           </button>
         </div>
       </div>

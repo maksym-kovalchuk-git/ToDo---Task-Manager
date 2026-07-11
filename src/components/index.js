@@ -8,3 +8,4 @@ export { default as TaskDragPreview } from './TaskDragPreview';
 export { default as ConfirmDialog } from './ConfirmDialog';
 export { default as DatePickerUK } from './DatePicker';
 export { default as BoardHeader } from './BoardHeader'
+export { default as LangSwitch } from './LangSwitch'

@@ -2,8 +2,12 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import './TaskCard.scss';
 
-export default function TaskCard({ task, onEdit, onDelete }) {
+import { useTranslation } from 'react-i18next';
+
+function TaskCard({ task, onEdit, onDelete }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: task.id });
+  
+  const { t } = useTranslation();
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -18,25 +22,27 @@ export default function TaskCard({ task, onEdit, onDelete }) {
       {...attributes}
     >
     <div className='task-drag-handle' {...listeners}>
-        {task.priority && <span className='task-priority-tag'>Важливо</span>}
-        <h4 className='task-title' onPointerDown={(e) => e.stopPropagation()}>{task.title}</h4>
+        {task.priority && <span className='task-priority-tag'>{t('important')}</span>}
+        <h4 className='task-title'>{task.title}</h4>
         <p className='task-description'>
             {task.description}
         </p>
         <div className='task-meta'>
-            <span>Додано: {task.date}</span>
+            <span>{t('added')}: {task.date}</span>
             {task.deadline && (
             <span className='deadline'>
-                Дедлайн: {new Date(task.deadline).toLocaleDateString('uk-UA')}
+                {t('deadline')}: {new Date(task.deadline).toLocaleDateString('uk-UA')}
             </span>
             )}
         </div>
     
       <div className='task-actions'>
-        <button className='btn' onPointerDown={(e) => e.stopPropagation()} onClick={() => onEdit(task)}>Редагувати</button>
-        <button className='btn btn-danger'onPointerDown={(e) => e.stopPropagation()} onClick={() => onDelete(task)}>Видалити</button>
+        <button className='btn' onPointerDown={(e) => e.stopPropagation()} onClick={() => onEdit(task)}>{t('edit')}</button>
+        <button className='btn btn-danger'onPointerDown={(e) => e.stopPropagation()} onClick={() => onDelete(task)}>{t('delete')}</button>
       </div>
     </div>
     </div>
   );
 }
+
+export default TaskCard;

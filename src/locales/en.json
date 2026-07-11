@@ -1,0 +1,37 @@
+{
+  "addColumn": "Add Column",
+  "columnTitle": "Column Title",
+  "colorSelect": "Select Color",
+  "deleteColumn": "Delete Column",
+  "columnTaskEmpty": "No tasks yet",
+  "changeColumnColor": "Change Column Color",
+  "addTask": "Add Task",
+  "createTask": "Create Task",
+  "important": "Important",
+  "added": "Added",
+  "deadline": "Deadline",
+  "taskTitle": "Task Title",
+  "taskDescription": "Task Description",
+  "taskCheckPriority": "Mark as Priority",
+  "enterTaskTitle": "Enter task title",
+  "create": "Create",
+  "save": "Save",
+  "saveTitle": "Save Title",
+  "edit": "Edit",
+  "delete": "Delete",
+  "deleteConfirmation": "Delete Confirmation",
+  "deleteColumnConfirmMessage": "Delete column «{{title}}» along with all tasks?",
+  "deleteTaskConfirmMessage": "Delete task «{{title}}»?",
+  "doubleClickToEdit": "Double-click to edit column title",
+  "dontShowAgain": "Don't ask again for an hour",
+  "cancel": "Cancel",
+  "pickDate": "Pick Date",
+  "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "weekdays": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+  "defaultColumns": {
+    "todo": "New Tasks",
+    "progress": "In Progress",
+    "done": "Completed"
+  }
+
+}

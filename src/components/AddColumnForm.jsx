@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { COLUMN_COLOR_OPTIONS } from '../constants';
 import './AddColumnForm.scss';
 
@@ -12,6 +14,8 @@ import './AddColumnForm.scss';
  * }} props
  */
 function AddColumnForm({ title, color, onTitleChange, onColorChange, onSubmit, onCancel }) {
+  const { t } = useTranslation();
+
   return (
     <form
       className='add-column-form'
@@ -22,7 +26,7 @@ function AddColumnForm({ title, color, onTitleChange, onColorChange, onSubmit, o
         autoFocus
         value={title}
         onChange={(e) => onTitleChange(e.target.value)}
-        placeholder='Назва колонки'
+        placeholder={t('columnTitle')}
         maxLength={18}
       />
       <div className='color-picker'>
@@ -39,8 +43,8 @@ function AddColumnForm({ title, color, onTitleChange, onColorChange, onSubmit, o
         ))}
       </div>
       <div className='add-column-actions'>
-        <button className='btn btn-primary' type='submit'>Створити</button>
-        <button className='btn' type='button' onClick={onCancel}>Скасувати</button>
+        <button className='btn btn-primary' type='submit'>{t('create')}</button>
+        <button className='btn' type='button' onClick={onCancel}>{t('cancel')}</button>
       </div>
     </form>
   );

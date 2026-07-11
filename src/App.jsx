@@ -12,6 +12,8 @@ import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { BoardHeader, Column, TaskDragPreview, AddColumnForm } from './components';
 import { useBoard, useBoardScroll } from './hooks';
 
+import { useTranslation } from 'react-i18next';
+
 import './App.scss';
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
     handleDragEnd,
     handleDragOver,
   } = useBoard();
+
+  const { t } = useTranslation();
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 10 } }),
@@ -85,7 +89,7 @@ function App() {
                 />
               ) : (
                 <button className='btn btn-add-column' onClick={() => setIsAddingColumn(true)}>
-                  + Додати колонку
+                  + {t('addColumn')}
                 </button>
               )}
             </div>

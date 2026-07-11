@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { arrayMove } from '@dnd-kit/sortable';
+import { useTranslation } from 'react-i18next';
 
 import useLocalStorage from './useLocalStorage';
-import { COLUMN_COLOR_OPTIONS, DEFAULT_COLUMNS, DEFAULT_TASKS_BY_COLUMN } from '../constants';
+import { COLUMN_COLOR_OPTIONS, getDefaultColumns, DEFAULT_TASKS_BY_COLUMN } from '../constants';
 
 /**
  * @typedef {import('../types').Task} Task
@@ -14,7 +15,8 @@ import { COLUMN_COLOR_OPTIONS, DEFAULT_COLUMNS, DEFAULT_TASKS_BY_COLUMN } from '
  * App.jsx лишається тонким і просто рендерить.
  */
 export function useBoard() {
-  const [columns, setColumns] = useLocalStorage('kanban-columns', DEFAULT_COLUMNS);
+  const { t } = useTranslation();
+  const [columns, setColumns] = useLocalStorage('kanban-columns', getDefaultColumns(t));
   const [tasksByColumn, setTasksByColumn] = useLocalStorage('kanban-tasks', DEFAULT_TASKS_BY_COLUMN);
   const [activeTask, setActiveTask] = useState(/** @type {Task|null} */ (null));
 
