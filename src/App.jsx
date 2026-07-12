@@ -10,13 +10,15 @@ import {
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
 import { BoardHeader, Column, TaskDragPreview, AddColumnForm } from './components';
-import { useBoard, useBoardScroll } from './hooks';
+import { useBgPreset, useBoard, useBoardScroll } from './hooks';
 
 import { useTranslation } from 'react-i18next';
 
 import './App.scss';
 
 function App() {
+  useBgPreset();
+
   const {
     columns,
     tasksByColumn,

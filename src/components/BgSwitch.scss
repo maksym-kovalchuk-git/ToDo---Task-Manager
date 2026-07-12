@@ -1,0 +1,71 @@
+@use '../styles/mixins' as *;
+
+.bg-switch {
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover,
+    &--active {
+      background: var(--surface-hover);
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    @include focus-ring(var(--accent));
+  }
+
+  &__popup {
+    position: absolute;
+    z-index: 99999;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transform: translateX(-100%);
+    animation: bg-pop-in 0.14s ease-out;
+  }
+}
+
+@keyframes bg-pop-in {
+  from { opacity: 0; transform: translateX(-100%) translateY(-4px); }
+  to   { opacity: 1; transform: translateX(-100%) translateY(0); }
+}
+
+.bg-preset-dot {
+  width: 126px;
+  height: 64px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include focus-ring(white, 2px);
+
+  &--active {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+  }
+}

@@ -1,6 +1,7 @@
 import logo from '../assets/icons/todo-logo.svg';
 import "./BoardHeader.scss";
 import LangSwitch from './LangSwitch';
+import BgSwitch from './BgSwitch';
 
 function BoardHeader() {
     return (
@@ -12,7 +13,10 @@ function BoardHeader() {
                     - Task Manager     
                 </h1>
             </span>
-            <LangSwitch />
+            <div className='board-header__right-side'>
+                <BgSwitch />
+                <LangSwitch />
+            </div>
         </div>
     )
 }
