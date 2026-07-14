@@ -32,6 +32,12 @@
     "todo": "New Tasks",
     "progress": "In Progress",
     "done": "Completed"
-  }
-
+  },
+  "hero": {
+    "title": "Manage tasks,",
+    "titleAccent": "not your stress",
+    "subtitle": "A clean Kanban board to organize your workflow. Create columns, add tasks, set priorities and deadlines.",
+    "cta": "Open Board"
+  },
+  "getStarted": "Get started"
 }
