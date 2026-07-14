@@ -14,6 +14,8 @@
         gap: 8px;
         border-radius: var(--radius);
         transition: background 0.15s ease;
+        text-decoration: none;
+
 
         img {
             width: 32px;
@@ -41,6 +43,7 @@
 
     &__right-side {
         display: flex;
+        align-items: center;
         gap: 20px;
     }
 }

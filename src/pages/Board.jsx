@@ -9,14 +9,14 @@ import {
 } from '@dnd-kit/core';
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
-import { BoardHeader, Column, TaskDragPreview, AddColumnForm } from './components';
-import { useBgPreset, useBoard, useBoardScroll } from './hooks';
+import { BoardHeader, Column, TaskDragPreview, AddColumnForm } from '../components';
+import { useBgPreset, useBoard, useBoardScroll } from '../hooks';
 
 import { useTranslation } from 'react-i18next';
 
-import './App.scss';
+import './Board.scss';
 
-function App() {
+function Board() {
   useBgPreset();
 
   const {
@@ -106,4 +106,4 @@ function App() {
   );
 }
 
-export default App;
+export default Board;

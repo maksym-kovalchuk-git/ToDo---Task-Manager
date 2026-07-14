@@ -4,6 +4,7 @@
   // ---- Базові поверхні ----
   --bg: #15171C;
   --surface: #1e21286a;
+  --surface-flat: #1e2128;
   --surface-hover: #252830;
   --card-bg: #16161e;
  
@@ -17,6 +18,7 @@
   --accent-hover: #B98EF5;
   --accent-soft: rgba(166, 120, 240, 0.14);
   --accent-border: rgba(166, 120, 240, 0.4);
+  --accent-gradient: linear-gradient(135deg, #A678F0 0%, #7040CC 100%);
  
   // ---- Колір помилки / видалення / пріоритету ----
   --danger: #C75450;
@@ -38,6 +40,11 @@
   --bg-gradient-bottom: #1B2436;
   --bg-glow-blue: rgba(91, 141, 239, 0.18);
   --bg-glow-blue-soft: rgba(60, 90, 180, 0.15);
+
+  --bg-home-nebula:
+      radial-gradient(circle at 15% 85%, rgba(166,120,240,0.12), transparent 45%),
+      radial-gradient(circle at 80% 20%, rgba(100,60,200,0.08), transparent 50%),
+      linear-gradient(180deg, #0F0D1A 0%, #150F28 55%, #1A1535 100%);
  
   // ---- Розміри ----
   --radius: 10px;
