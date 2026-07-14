@@ -5,6 +5,7 @@ A web application for managing tasks — rename, delete, drag & drop, and organi
 ![Preview](docs/preview.png)
 
 ## Features
+- Home landing page
 - Drag & drop tasks between columns
 - UA / EN localization with persistent language selection
 - 6 background theme presets
@@ -14,6 +15,7 @@ A web application for managing tasks — rename, delete, drag & drop, and organi
 
 ## Tech Stack
 - **React 19** — UI library
+- **React Router** — client-side routing
 - **Vite** — build tool
 - **SCSS** — styling with mixins and CSS custom properties
 - **Bootstrap 5** — base UI components
