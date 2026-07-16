@@ -39,5 +39,24 @@
     "subtitle": "A clean Kanban board to organize your workflow. Create columns, add tasks, set priorities and deadlines.",
     "cta": "Open Board"
   },
-  "getStarted": "Get started"
+  "getStarted": "Get started",
+  "features": {
+    "sectionTitle": "Everything you need",
+    "organize": {
+      "title": "Organize your tasks",
+      "desc": "Drag and drop tasks between columns to track your progress effortlessly."
+    },
+    "theme": {
+      "title": "Customize your workspace",
+      "desc": "Pick from 6 background presets to create the perfect atmosphere for deep work."
+    },
+    "deadline": {
+      "title": "Set deadlines",
+      "desc": "Assign due dates and priority marks to keep every task on schedule."
+    },
+    "columns": {
+      "title": "Manage your columns",
+      "desc": "Create, rename, recolor, and delete columns to fit your workflow."
+    }
+  }
 }
