@@ -135,6 +135,11 @@ function DatePicker({ value = null, onChange, placeholder }) {
         <button type="button" className="dp__value" onClick={() => setOpen(!open)}>
           {value ? formatDate(value) : resolvedPlaceholder}
         </button>
+        {value && (
+          <button type="button" className="dp__clear-btn" onClick={() => onChange?.(null)}>
+            ×
+          </button>
+        )}
         <button type="button" className="dp__icon-btn" onClick={() => setOpen(!open)}>
           <CalendarIcon />
         </button>

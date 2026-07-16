@@ -56,7 +56,7 @@ function EditTaskForm({ task, columnId, onSave, onCancel }) {
         {t('deadline')}:
         <DatePickerUk
           value={draft.deadline ? new Date(draft.deadline) : null}
-          onChange={(date) => setDraft({ ...draft, deadline: toIsoDate(date) })}
+          onChange={(date) => setDraft({ ...draft, deadline: date ? toIsoDate(date) : null })}
         />
       </label>
       <div className='form-actions'>
